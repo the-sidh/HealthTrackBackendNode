@@ -1,0 +1,18 @@
+body {
+	background:url(../img/bg.jpg) no-repeat !important;
+	padding-top:100px;
+	padding-left:100px;
+	background-size:cover;
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+a{text-decoration: none !important}
+
+#alerta {
+    color: red;
+    font-weight: bold;
+}
+
+
+;
