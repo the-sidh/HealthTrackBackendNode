@@ -17,7 +17,7 @@ const hbs = require('hbs');
 const moment = require('moment');
 const dateFormat = 'DD/MM/YYYY';
 hbs.registerPartials(__dirname + '/views/partials');
-
+const port = process.env.PORT || 3000;
 var app = express();
 
 app.set('view engine', 'hbs');
@@ -167,11 +167,6 @@ app.get('/user/me/', authenticate, (req, res) => {
     res.send(req.user)
 });
 
-
-app.listen(3000);
-
-
-
 function deletePeso(req, res) {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
@@ -210,4 +205,5 @@ function updatePeso(req, res) {
     }
 }
 
+app.listen(process.env.PORT);
 module.exports = { mongoose, app };
