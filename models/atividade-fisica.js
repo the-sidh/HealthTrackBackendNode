@@ -10,7 +10,7 @@ var schema = new mongoose.Schema({
         unique: true,
         validate: {
             validator: (value) => {
-                return tipoAtividade.contains(value);
+                return (tipoAtividade.indexOf(value) > -1) ;
             }, message: '{VALUE} is not valid'
 
         }
