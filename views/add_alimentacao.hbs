@@ -14,29 +14,29 @@
           <nav aria-label="breadcrumb ">
             <ol class="breadcrumb ">
              <li class="breadcrumb-item" aria-current="page "><a href="/">Home</a></li>             
-             <li class="breadcrumb-item active" aria-current="page "><a href="atividade_fisica">Minhas atividades f&iacute;sicas</a></li>
-             <li class="breadcrumb-item" aria-current="page ">Nova atividade f&iacute;sica</li>
+             <li class="breadcrumb-item active" aria-current="page "><a href="../alimentacao">Minhas alimenta&ccedil;&atilde;o</a></li>
+             <li class="breadcrumb-item" aria-current="page ">Nova alimenta&ccedil;&atilde;o</li>
            </ol>  
          </nav>
        </section>
        <section class="col-md-7 "><p class="font-weight-bold "></p></section>
      </div>
      <div class="card col-md-4" style="padding: 20px;" >
-      <form action="/atividade-fisica" id="add" method="post" class="form-horizontal" card col-md-4>
+      <form action="/alimentacao" id="add" method="post" class="form-horizontal" card col-md-4>
         <div class="form-group">
           <label for="tipo">Tipo</label>
           <select class="form-control" name="tipo">
-             {{#each tipoAtividade}}
+             {{#each tipoAlimentacao}}
             <option value="{{this}}">{{this}}</option>  
                {{/each}}                   
           </select>
         </div>
         <div class="form-group" >
           <label for="desc ">Descri&ccedil;&atilde;o:</label>
-          <input type="text" class="form-control" name="descricao" placeholder="Descreva a atividade f&iacute;sica ">
+          <input type="text" class="form-control" name="descricao" placeholder="Descreva a alimentacao">
         </div>
         <div class="form-group" >
-          <label for="data ">Calorias gastas (em kcal)</label>
+          <label for="data ">Calorias ingeridas (em kcal)</label>
           <input type="text" class="form-control" name="calorias" placeholder="0 ">
         </div>
         <div class="form-group" >
@@ -46,7 +46,7 @@
         
         <div>
         <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('add').submit(); ">Salvar</a>
-         <a href="atividade_fisica.html" role="button" class="btn btn-danger ">Cancelar</a>
+         <a href="/alimentacao" role="button" class="btn btn-danger ">Cancelar</a>
        </div>
      </form>
 

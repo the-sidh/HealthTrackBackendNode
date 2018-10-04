@@ -19,7 +19,28 @@ var schema = new mongoose.Schema({
         minlength: 6
     },
 
+    _creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    }
+
 });
+
+schema.statics.findMostRecent = function (user) {
+    var pressaoFound = Pressao.findOne({
+        _creator: user._id,
+    }).sort({ "data": -1 });
+    return pressaoFound;
+
+}
+
+
+schema.statics.findByUser = function (user){        
+    var medida = Pressao.find({
+        _creator: user._id,
+    });
+    return medida;
+};
 
 var Pressao = mongoose.model('Pressao', schema);
 

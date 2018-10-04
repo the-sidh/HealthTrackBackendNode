@@ -14,18 +14,22 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
              <li class="breadcrumb-item" aria-current="page"><a href="/">Home</a></li>
-             <li class="breadcrumb-item active" aria-current="page"><a href="../peso">Minhas pesagens</a></li>
-             <li class="breadcrumb-item active" aria-current="page">Nova pesagem</li>
+             <li class="breadcrumb-item active" aria-current="page"><a href="../pressao">Minhas medidas de press&atilde;o</a></li>
+             <li class="breadcrumb-item active" aria-current="page">Nova medidas de press&atilde;o</li>
            </ol>  
          </nav>
        </section>
        <section class="col-md-7"><p class="font-weight-bold"></p></section>
      </div>
      <div class="card col-md-4" style="padding: 20px;" >
-       <form action="/peso" id="add" method="post" class="form-horizontal" card col-md-4>      
+       <form action="/pressao" id="add" method="post" class="form-horizontal" card col-md-4>      
         <div class="form-group" >
-          <label for="desc">Peso em quilos</label>
-          <input type="text" class="form-control" name="quilos" placeholder="0">
+          <label for="desc">Pressao sist&oacute;lica</label>
+          <input type="text" class="form-control" name="sistolica" placeholder="0">
+        </div>        
+        <div class="form-group" >
+          <label for="desc">Pressao diast&oacute;lica</label>
+          <input type="text" class="form-control" name="diastolica" placeholder="0">
         </div>        
         <div class="form-group" >
           <label for="data">Data</label>
@@ -34,7 +38,7 @@
         
         <div>
           <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('add').submit();">Salvar</a>
-         <a href="../peso" role="button" class="btn btn-danger">Cancelar</a>
+         <a href="../pressao" role="button" class="btn btn-danger">Cancelar</a>
        </div>
      </form>
 

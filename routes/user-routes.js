@@ -1,17 +1,14 @@
-var express = require('express');
-var userRoutes = express.Router();
-
-
-// 
+var app = require('../healthTrack').app;
 const { User } = require('../models/user');
 const _ = require('lodash');
 const { authenticate } = require('../middleware/authenticate');
 const bodyParser = require('body-parser');
+const moment = require('moment');
+const dateFormat = 'DD/MM/YYYY';
 
-userRoutes.use(bodyParser.json());
+app.use(bodyParser.json());
 
-var getUser = (req, res, next) => {
-
+app.get('/user',  (req, res) => {
     if (req.query.email) {
         console.log(req.query.email);
         User.findOne({ email: req.query.email }).then((user) => {
@@ -31,11 +28,10 @@ var getUser = (req, res, next) => {
         });
 
     }
-    next();
-};
+});
 
 
-var addUser =  (req, res, next) => {
+app.post('/user', (req, res) => {
     var body = _.pick(req.body, ['email', 'password', 'nome', 'altura', 'dataNasc', 'genero']);
     var user = new User({
         email: body.email,
@@ -53,16 +49,51 @@ var addUser =  (req, res, next) => {
     }).catch((err) => {
         res.status(400).send(err)
     });
-    next();
-};
+});
 
-var getMe = (req, res, next) => {
+app.get('/user/me/',authenticate, (req, res) => {
     res.send(req.user);
-    next();
-};
+});
 
-module.exports = function (userRoutes) {
-    userRoutes.get('/user', getUser);
-    userRoutes.post('/user', addUser);
-    userRoutes.get('/user/me/',authenticate, getMe);
-};
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.get('/signup/', (req, res) => {
+    res.render('cadastro.hbs');
+});
+
+app.post('/user/signin/', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password']);
+    User.findByCredentials(body.email, body.password).then((user) => {
+        req.session.user = user;
+        res.redirect('/');
+    }).catch((err) => {
+        res.redirect('/login');
+    });
+});
+
+app.post('/user/register/', (req, res) => {
+    var body = _.pick(req.body, ['email', 'password', 'nome', 'altura', 'dataNasc', 'genero']);
+    body.dataNasc = moment(req.body.dataNasc, dateFormat).toDate();
+    var user = new User({
+        nome: body.nome,
+        altura: body.altura,
+        dataNasc: body.dataNasc,
+        genero: body.genero,
+        email: body.email,
+        password : body.password
+    });
+
+    user.save().then(() => {
+        req.session.user = user;
+        res.redirect('/');
+    }).catch((err) => {
+        res.redirect('/login');
+    });
+});
+
+app.get('/user/logout/', (req, res) => {
+          req.session.user = undefined;
+          res.redirect('/login');
+});

@@ -3,17 +3,17 @@ const dateFormat = 'DD/MM/YYYY';
 const _ = require('lodash');
 const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb').ObjectId;
-const { AtividadeFisica } = require('../models/atividade-fisica');
-const redirectTo = '/atividade-fisica';
-var app = require('../healthTrack').app;
-const { tipoAtividade } = require('../models/tipo-atividade'); 
+const { Pressao } = require('../models/pressao');
 const { authenticate } = require('../middleware/authenticate');
+
+var app = require('../healthTrack').app;
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
+
+app.post('/save_pressao/:id', authenticate, (req, res) => {
     var operation = req.body.operation;
     if (operation === 'update') {
         req.body.data = moment(req.body.data, dateFormat).toDate();
@@ -23,53 +23,50 @@ app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
     }
 });
 
-app.post('/atividade-fisica', authenticate, (req, res) => {
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
+app.post('/pressao', authenticate, (req, res) => {
+    var body = _.pick(req.body, ['sistolica', 'diastolica', 'data']);
     body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
-    var atividadeFisica = new AtividadeFisica({
-        tipo: body.tipo,
+
+    var pressao = new Pressao({
+        sistolica: body.sistolica,
+        diastolica : body.diastolica,
         data: body.data,
-        calorias: body.calorias,
-        descricao: body.descricao,
         _creator: user._id,
     });
-    
-    saveMedida(atividadeFisica, res);
-});
 
+    saveMedida(pressao, res);
+});
 
 app.use(bodyParser.json());
 
-app.get('/atividade-fisica', authenticate, (req, res) => {
-    AtividadeFisica.findByUser(req.session.user).then(
-        (AtividadeFisica) => {
-            res.render('atividade_fisica.hbs', { AtividadeFisica});
+app.get('/pressao', authenticate, (req, res) => {
+    Pressao.findByUser(req.session.user).then(
+        (pressoes) => {
+            res.render('pressao.hbs', { pressoes });
         }, (err) => {
             res.send(400);
         }).catch((err) => {
             res.status(401).send();
         });
-
 });
 
-app.get('/add-atividade-fisica', authenticate, (req, res) => {
-    res.render('add_atividade_fisica.hbs', {tipoAtividade});
+app.get('/addPressao', authenticate, (req, res) => {
+    res.render('add_pressao.hbs');
 });
 
-app.patch('/atividade-fisica/:id', authenticate, (req, res) => {
+app.patch('/pressao/:id',authenticate, (req, res) => {
     updateMedida(req, res);
 });
 
-app.get('/atividade-fisica/:id', authenticate, (req, res) => {
+app.get('/pressao/:id', authenticate, (req, res) => {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findById(id).then((atividade) => {
-            res.render('edit_atividade_fisica.hbs',
+        Pressao.findById(id).then((pressao) => {
+            res.render('edit_pressao.hbs',
                 {
-                    atividade,
-                    req,
-                    tipoAtividade
+                    pressao,
+                    req
                 });
         });
     } else {
@@ -78,15 +75,14 @@ app.get('/atividade-fisica/:id', authenticate, (req, res) => {
 
 });
 
-app.delete('/atividade-fisica/:id', authenticate, (req, res) => {
+app.delete('/pressao/:id',authenticate, (req, res) => {
     deleteMedida(req, res);
 });
 
 
-
 var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
-        res.redirect(redirectTo);
+        res.redirect('/pressao');
     }).catch((err) => {
         res.status(400).send(err);
     });
@@ -96,9 +92,9 @@ var saveMedida = (medida, res) => {
 function deleteMedida(req, res) {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findByIdAndRemove(id).then((atividade) => {
-            if (atividade) {
-                res.redirect(redirectTo);
+        Pressao.findByIdAndRemove(id).then((pressao) => {
+            if (pressao) {
+                res.redirect('/pressao');
             }
             else {
                 res.status(400).send('empty');
@@ -110,15 +106,14 @@ function deleteMedida(req, res) {
     }
 }
 
-
 function updateMedida(req, res) {
     var id = req.params.id;
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
+    var body = _.pick(req.body, ['data', 'sistolica', 'diastolica']);
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findByIdAndUpdate(id, { $set: body }, { new: true }).
+        Pressao.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {
                 if (doc) {
-                    res.redirect(redirectTo);
+                    res.redirect('/pressao');
                 }
                 else {
                     res.status(400).send('empty');

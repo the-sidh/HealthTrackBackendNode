@@ -4,6 +4,7 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb').ObjectId;
 const { Peso } = require('../models/peso');
+const { authenticate } = require('../middleware/authenticate');
 
 var app = require('../healthTrack').app;
 
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.post('/save_peso/:id', (req, res) => {
+app.post('/save_peso/:id', authenticate, (req, res) => {
     var operation = req.body.operation;
     if (operation === 'update') {
         req.body.data = moment(req.body.data, dateFormat).toDate();
@@ -22,22 +23,27 @@ app.post('/save_peso/:id', (req, res) => {
     }
 });
 
-app.post('/peso',(req, res) => {
+app.post('/peso', authenticate, (req, res) => {
     var body = _.pick(req.body, ['quilos', 'data']);
     req.body.data = moment(req.body.data, dateFormat).toDate();
-    var peso = new Peso({
-        quilos: req.body.quilos,
-        data: req.body.data
-    });
+    var user = req.session.user;
+    if (user) {
 
-    saveMedida(peso, res);
+        var peso = new Peso({
+            quilos: req.body.quilos,
+            data: req.body.data,
+            _creator: user._id,
+        });
+
+        saveMedida(peso, res);
+    }
 });
 
 
 app.use(bodyParser.json());
 
-app.get('/peso', (req, res) => {
-    Peso.find().then(
+app.get('/peso', authenticate, (req, res) => {
+    Peso.findByUser(req.session.user).then(
         (pesos) => {
             res.render('peso.hbs', { pesos });
         }, (err) => {
@@ -45,18 +51,17 @@ app.get('/peso', (req, res) => {
         }).catch((err) => {
             res.status(401).send();
         });
-
 });
 
-app.get('/addPeso', (req, res) => {
+app.get('/addPeso', authenticate, (req, res) => {
     res.render('add_peso.hbs');
 });
 
-app.patch('/peso/:id', (req, res) => {
+app.patch('/peso/:id', authenticate, (req, res) => {
     updatePeso(req, res);
 });
 
-app.get('/peso/:id',(req, res) => {
+app.get('/peso/:id', authenticate, (req, res) => {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
         Peso.findById(id).then((peso) => {
@@ -72,7 +77,7 @@ app.get('/peso/:id',(req, res) => {
 
 });
 
-app.delete('/peso/:id', (req, res) => {
+app.delete('/peso/:id', authenticate, (req, res) => {
     deletePeso(req, res);
 });
 

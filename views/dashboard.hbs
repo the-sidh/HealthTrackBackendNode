@@ -1,0 +1,60 @@
+  <!Doctype html>
+  <html lang="en">
+
+{{>header}}
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <h2>HealthTrack</h2>
+      </div>
+      <div class="row justify-content-between">
+        <section class="col-md-auto">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+             <li class="breadcrumb-item active" aria-current="page">Home</li>
+           </ol>  
+         </nav>
+       </section>
+       <section class="col-md-7"><spam id="datetime" class="font-weight-bold"></spam></section>
+       <script>
+          var dt = new Date();
+          document.getElementById("datetime").innerHTML = dt.toLocaleString();
+        </script>
+     </div>
+     <div class="row justify-content-between" style="padding: 20px;">
+       <section class="card col-md-4" style="width: 18rem;padding: 18px;">Seja bem-vindo {{user.nome}}! </section>
+       <section class=" col-md-4"> </section>
+       <section class="col-md-4"></section>
+     </div>
+
+     <div class="row justify-content-between" style="padding: 20px;">
+       <section class="col-md-4">
+         <div class="card" style="width: 18rem;padding: 18px;">
+          <div class="row">Nome: {{user.nome}}</div>
+          <div class="row">Idade: {{idade}} anos</div>
+          <div class="row">IMC: {{imc.valor}} ({{imc.status}})</div>
+          <div class="row">Peso: {{peso.quilos}} </div>
+          <div class="row">
+            <section>Pressão arterial:</section>
+            <section>{{pressao.sistolica}}/{{pressao.diastolica}} mmgh<br>({{status_pressao}})</section>
+          </div> 
+        </div>
+
+      </section>
+      <section class="col-md-4">
+        <div class="btn-group-vertical" style="width: 18rem;padding: 18px;">          
+          <a class="btn btn-secondary" href="peso/" role="button"><i class="fas fa-weight" style="padding: 10px;"></i>Minhas pesagens</a>
+          <a class="btn btn-secondary" href="atividade-fisica/" role="button"><i class="fas fa-bicycle" style="padding: 10px;"></i>Minha atividade física</a>
+          <a class="btn btn-secondary" href="alimentacao/" role="button"><i class="fas fa-utensils" style="padding: 10px;"></i>Minha alimentação</a>
+          <a class="btn btn-secondary" href="pressao/" role="button"><i class="fas fa-briefcase-medical" style="padding: 10px;"></i>Minha pressão arterial</a>
+          <a class="btn btn-secondary" href="edit_cadastro.html" role="button"><i class="fas fa-at" style="padding: 10px;"></i>Meu cadastro</a>
+          <a class="btn btn-secondary" href="signout" role="button"><i class="fas fa-times-circle" style="padding: 10px;"></i>Sair</a>
+        </div>
+      </section>
+      <section class="col-md-4"></section>
+    </div>  
+  </div>
+
+</body>
+</html>

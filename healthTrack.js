@@ -15,15 +15,12 @@ const dateFormat = 'DD/MM/YYYY';
 const port = process.env.PORT || 3000;
 var app = express();
 var { mongoose } = require('./db/mongoose');
+const session = require('express-session');
+const { authenticate } = require('./middleware/authenticate');
+
 app.set('view engine', 'hbs');
 
-// const  userRoutes  = require('./routes/user-routes');
-// app.use('/',userRoutes);
-
-
-//app.use('/',pesoRoutes);
-//app.use('/addPeso',pesoRoutes);
-//app.use('/save_peso',pesoRoutes);
+app.use(session({ secret: 'eNJKDJDJJASDN*747e]455Snjnssdjsdjnsjjs', cookie: { maxAge: 60000 } }));
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('formatDate', (datetime) => {
@@ -33,14 +30,16 @@ hbs.registerHelper('formatDate', (datetime) => {
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-// app.get('/', (req, res,next) => {
-//     res.render('home.hbs', {
-//         pageTitle: 'home',
-//         wellcomeMsg: 'Hi!!',
-//     });
-//     next();
-// });
+
+app.get('/login', (req, res) => {
+    res.render('login.hbs');
+});
+
 module.exports = { mongoose, app };
+const dashboardRoutes = require('./routes/dashboard-routes');
+const userRoutes = require('./routes/user-routes');
 const pesoRoutes = require('./routes/peso-routes');
+const pressaoRoutes = require('./routes/pressao-routes');
+const alimentacaoRoutes = require('./routes/alimentacao-routes');
 const atividadeRoutes = require('./routes/atividade-fisica-routes');
 app.listen(process.env.PORT);

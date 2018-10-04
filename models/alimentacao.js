@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
         unique: true,
         validate: {
             validator: (value) => {
-                return tipoAlimentacao.contains(value);
+                return (tipoAlimentacao.indexOf(value) > -1) ;
             }, message: '{VALUE} is not valid'
 
         }
@@ -34,7 +34,22 @@ var schema = new mongoose.Schema({
         minlength: 6
     },
 
+    _creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    }
+
 });
+
+schema.statics.findByUser = function (user){
+    
+    
+    var medida = Alimentacao.find({
+        _creator: user._id,
+    });
+
+    return medida;
+};
 
 var Alimentacao = mongoose.model('Alimentacao', schema);
 

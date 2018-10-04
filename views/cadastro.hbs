@@ -1,0 +1,68 @@
+<!-- Declaração obrigatória para o funcionamento do framework. -->
+<!Doctype html>
+<html lang="en">
+
+{{>header}}
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <h2>HealthTrack</h2>
+    </div>
+    <div class="row justify-content-between">
+      <section class="col-md-auto">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+          </ol>
+        </nav>
+      </section>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
+      <form class="form-horizontal" action="/user/register/" method="post" id="signup" card col-md-4>
+        <div class="form-group ">
+          <label for="nome">Nome completo:</label>
+          <input type="text" class="form-control" name="nome" placeholder="Entre seu nome">
+        </div>
+        <div class="form-group ">
+          <label for="nome">Data de nascimento:</label>
+          <input type="text" class="form-control" name="dataNasc" placeholder="DD/MM/AAAA">
+        </div>
+        <div class="form-group ">
+          <label for="nome">G&ecirc;nero:</label>
+          <select name="genero" class="form-control">
+            <option value="feminino">Feminino</option>
+            <option value="masculino">Masculino</option>
+          </select>
+        </div>
+        <div class="form-group ">
+          <label for="altura">Altura:</label>
+          <input type="text" class="form-control" name="altura" placeholder="0.00m">
+        </div>
+        <div class="form-group ">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control" name="email" placeholder="Entre seu email">
+        </div>
+        <div class="form-group ">
+          <label for="password">Senha:</label>
+          <input type="password" id="pass1" class="form-control" name="password">
+        </div>
+        <div class="form-group ">
+          <label for="nome">Confirme sua senha:</label>
+          <input type="password" id="pass2" class="form-control" name="password2">
+        </div>
+        <div>
+          <a href="#" role="button" class="btn btn-primary" onClick="
+         if(document.getElementById('pass1').value===document.getElementById('pass2').value)
+         {document.getElementById('signup').submit();
+         }else{alert('As senhas digitadas diferem');
+         }">Cadastrar</a>
+          <a href="/login" role="button" class="btn btn-danger">Cancelar</a>
+        </div>
+      </form>
+
+    </div>
+
+</body>
+
+</html>

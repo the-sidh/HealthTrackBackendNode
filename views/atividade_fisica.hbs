@@ -8,11 +8,11 @@
       <div class="row">
         <h2>HealthTrack</h2>
       </div>
-      <div class="row justify-content-between"">
+      <div class="row justify-content-between">
         <section class="col-md-auto">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-             <li class="breadcrumb-item" aria-current="page"><a href="dashboard.html">Home</a></li>
+             <li class="breadcrumb-item" aria-current="page"><a href="/">Home</a></li>
              <li class="breadcrumb-item active" aria-current="page">Minhas atividades f&iacute;sicas</li>
            </ol>  
          </nav>
@@ -36,18 +36,19 @@
             {{#each AtividadeFisica}}
             <tr>
             <td>{{this.tipo}}</td>
-            <td>{{formatDate this.data}}</td>
-            <td>{{this.calorias}}</td>
              <td>{{this.descricao}}</td>
-            <td><a href="atividade-fisica/{{this.id}}"><i class="fas fa-edit"></i></a> </td>           
-            <td><form id="delete" action="save_atividade-fisica/{{this.id}}" method="post">
+             <td>{{this.calorias}}</td>
+            <td>{{formatDate this.data}}</td>       
+            
+            <td><a href="../atividade-fisica/{{this.id}}"><i class="fas fa-edit"></i></a> </td>           
+            <td><form id="delete" action="../save_atividade-fisica/{{this.id}}" method="post">
               <a href="#" onClick="if (confirm('Tem certeza que deseja remover esse registro?')){document.getElementById('delete').submit()}"><i class="fas fa-trash-alt"></i></a></form></td>
               </tr>
-             {{/each}}          
+             {{/each}}   
         </tbody>       
       </table>
       <form>
-        <a role="button" class="btn btn-primary" href="add-atividade-fisica">Nova atividade f&iacute;sica</a>       
+        <a role="button" class="btn btn-primary" href="../add-atividade-fisica">Nova atividade f&iacute;sica</a>       
       </form>
 
     </div>

@@ -1,0 +1,54 @@
+<!-- Declaração obrigatória para o funcionamento do framework. -->
+<!Doctype html>
+<html lang="en">
+
+{{>header}}
+
+<body>
+  <form class="form-horizontal" action="../save_pressao/{{req.params.id}}" method="post" id = "edit" card col-md-4>
+    <input type="hidden" name="operation" value="update">
+    <div class="container-fluid">
+      <div class="row">
+        <h2>HealthTrack</h2>
+      </div>
+      <div class="row justify-content-between">
+        <section class="col-md-auto ">
+          <nav aria-label="breadcrumb ">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item" aria-current="page"><a href="dashboard.html ">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="/pressao">Minhas medidas de press&atilde;o</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Edi&ccedil;&atilde;o de medida de press&atilde;o</li>
+            </ol>
+          </nav>
+        </section>
+        <section class="col-md-7">
+          <p class="font-weight-bold"></p>
+        </section>
+      </div>
+      <div class="card col-md-4" style="padding: 20px;">
+        <div class="form-group ">
+          <label for="sistolica">Press&atilde;o sist&oacute;lica</label>
+          <input type="text" class="form-control" name="sistolica" value="{{pressao.sistolica}}">
+        </div>
+        <div class="form-group ">
+          <label for="diastolica">Press&atilde;o diast&oacute;lica</label>
+          <input type="text" class="form-control" name="diastolica" value="{{pressao.diastolica}}">
+        </div>
+        <div class="form-group">
+          <label for="data">Data</label>
+          <input type="text" class="form-control" name="data" value="{{formatDate pressao.data}}">
+        </div>
+
+        <div>
+
+          <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('edit').submit(); ">Salvar</a>
+
+          <a href="../pressao" role="button" class="btn btn-danger">Cancelar</a>
+        </div>
+
+
+      </div>
+  </form>
+</body>
+
+</html>

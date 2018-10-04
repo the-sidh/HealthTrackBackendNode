@@ -3,17 +3,17 @@ const dateFormat = 'DD/MM/YYYY';
 const _ = require('lodash');
 const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb').ObjectId;
-const { AtividadeFisica } = require('../models/atividade-fisica');
-const redirectTo = '/atividade-fisica';
+const { Alimentacao } = require('../models/alimentacao');
+const redirectTo = '/alimentacao';
 var app = require('../healthTrack').app;
-const { tipoAtividade } = require('../models/tipo-atividade'); 
+const { tipoAlimentacao } = require('../models/tipo-alimentacao'); 
 const { authenticate } = require('../middleware/authenticate');
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
+app.post('/save_alimentacao/:id', authenticate, (req, res) => {
     var operation = req.body.operation;
     if (operation === 'update') {
         req.body.data = moment(req.body.data, dateFormat).toDate();
@@ -23,11 +23,11 @@ app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
     }
 });
 
-app.post('/atividade-fisica', authenticate, (req, res) => {
+app.post('/alimentacao', authenticate, (req, res) => {
     var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
     body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
-    var atividadeFisica = new AtividadeFisica({
+    var alimentacao = new Alimentacao({
         tipo: body.tipo,
         data: body.data,
         calorias: body.calorias,
@@ -35,16 +35,16 @@ app.post('/atividade-fisica', authenticate, (req, res) => {
         _creator: user._id,
     });
     
-    saveMedida(atividadeFisica, res);
+    saveMedida(alimentacao, res);
 });
 
 
 app.use(bodyParser.json());
 
-app.get('/atividade-fisica', authenticate, (req, res) => {
-    AtividadeFisica.findByUser(req.session.user).then(
-        (AtividadeFisica) => {
-            res.render('atividade_fisica.hbs', { AtividadeFisica});
+app.get('/alimentacao', authenticate, (req, res) => {
+    Alimentacao.findByUser(req.session.user).then(
+        (Alimentacao) => {
+            res.render('alimentacao.hbs', { Alimentacao});
         }, (err) => {
             res.send(400);
         }).catch((err) => {
@@ -53,23 +53,23 @@ app.get('/atividade-fisica', authenticate, (req, res) => {
 
 });
 
-app.get('/add-atividade-fisica', authenticate, (req, res) => {
-    res.render('add_atividade_fisica.hbs', {tipoAtividade});
+app.get('/add_alimentacao', authenticate, (req, res) => {
+    res.render('add_alimentacao.hbs', {tipoAlimentacao});
 });
 
-app.patch('/atividade-fisica/:id', authenticate, (req, res) => {
+app.patch('/alimentacao/:id', authenticate, (req, res) => {
     updateMedida(req, res);
 });
 
-app.get('/atividade-fisica/:id', authenticate, (req, res) => {
+app.get('/alimentacao/:id', authenticate, (req, res) => {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findById(id).then((atividade) => {
-            res.render('edit_atividade_fisica.hbs',
+        Alimentacao.findById(id).then((alimentacao) => {
+            res.render('edit_alimentacao.hbs',
                 {
-                    atividade,
+                    alimentacao,
                     req,
-                    tipoAtividade
+                    tipoAlimentacao
                 });
         });
     } else {
@@ -78,7 +78,7 @@ app.get('/atividade-fisica/:id', authenticate, (req, res) => {
 
 });
 
-app.delete('/atividade-fisica/:id', authenticate, (req, res) => {
+app.delete('/alimentacao/:id', authenticate, (req, res) => {
     deleteMedida(req, res);
 });
 
@@ -96,8 +96,8 @@ var saveMedida = (medida, res) => {
 function deleteMedida(req, res) {
     var id = req.params.id;
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findByIdAndRemove(id).then((atividade) => {
-            if (atividade) {
+        Alimentacao.findByIdAndRemove(id).then((alimentacao) => {
+            if (alimentacao) {
                 res.redirect(redirectTo);
             }
             else {
@@ -115,7 +115,7 @@ function updateMedida(req, res) {
     var id = req.params.id;
     var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
     if (ObjectId.isValid(id)) {
-        AtividadeFisica.findByIdAndUpdate(id, { $set: body }, { new: true }).
+        Alimentacao.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {
                 if (doc) {
                     res.redirect(redirectTo);

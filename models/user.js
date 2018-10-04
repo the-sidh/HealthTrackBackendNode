@@ -8,9 +8,9 @@ var userSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        required: true,
         minlength: 1,
         unique: true,
+        required: true,
         validate: {
             validator: (value) => {
                 return validator.isEmail(value);
@@ -43,31 +43,21 @@ var userSchema = new mongoose.Schema({
         type: Number,
         required: true,
         minlength: 6
-    },
-  
-    tokens: [{
-        access: {
-            type: String,
-            required: true,
-        },
+    }
 
-        token: {
-            type: String,
-            required: true,
-        }
-    }]
+
 });
 
 userSchema.pre('save', function (next) {
     var user = this;
-    if (user.isModified('password')){
+    if (user.isModified('password')) {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(user.password, salt, (err, hash) => {
-                user.password = hash;          
-                next();      
+                user.password = hash;
+                next();
             });
         });
-    }else{
+    } else {
         next();
     }
 })
@@ -108,6 +98,34 @@ userSchema.statics.findByToken = function (token) {
 
     return userfound;
 }
+
+userSchema.statics.findByCredentials = function (email, password) {
+    var User = this;
+    return User.findOne({ email }).then((userfound) => {
+        if (!userfound) {
+            Promise.reject();
+        } else {
+            return new Promise((resolve, reject) => {
+                bcrypt.compare(password, userfound.password, (err, res) => {
+                    if (res) {
+                        resolve(userfound);
+                    } else {
+                        reject();
+                    }
+                });
+            });
+        }
+    });
+};
+
+userSchema.statics.findByEmail = function (email) {
+    var User = this;
+    return User.findOne({ email }).then((userfound) => {
+        return userfound;
+    });
+};
+
+
 
 var User = mongoose.model('User', userSchema);
 

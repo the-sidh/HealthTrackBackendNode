@@ -35,7 +35,22 @@ var schema = new mongoose.Schema({
         minlength: 6
     },
 
+    _creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    }
+
 });
+
+
+schema.statics.findByUser = function (user){
+        
+    var medida = AtividadeFisica.find({
+        _creator: user._id
+    });
+
+    return medida;
+};
 
 var AtividadeFisica = mongoose.model('AtividadeFisica', schema);
 
