@@ -1,26 +1,24 @@
 const mongoose = require('mongoose');
-const {tipoAlimentacao} = require('./tipo-alimentacao');
+const { tipoAlimentacao } = require('./tipo-alimentacao');
 var schema = new mongoose.Schema({
     tipo: {
         type: String,
         trim: true,
         required: true,
         minlength: 1,
-        unique: true,
         validate: {
             validator: (value) => {
-                return (tipoAlimentacao.indexOf(value) > -1) ;
+                return (tipoAlimentacao.indexOf(value) > -1);
             }, message: '{VALUE} is not valid'
 
         }
     },
 
-    descricao : {
+    descricao: {
         type: String,
         trim: true,
         required: false,
         minlength: 1,
-        unique: true,
     },
 
     data: {
@@ -41,9 +39,9 @@ var schema = new mongoose.Schema({
 
 });
 
-schema.statics.findByUser = function (user){
-    
-    
+schema.statics.findByUser = function (user) {
+
+
     var medida = Alimentacao.find({
         _creator: user._id,
     });

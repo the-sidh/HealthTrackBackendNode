@@ -7,7 +7,6 @@ var schema = new mongoose.Schema({
         trim: true,
         required: true,
         minlength: 1,
-        unique: true,
         validate: {
             validator: (value) => {
                 return (tipoAtividade.indexOf(value) > -1) ;
@@ -21,8 +20,7 @@ var schema = new mongoose.Schema({
         trim: true,
         required: false,
         minlength: 1,
-        unique: true,
-    },
+        },
 
     data: {
         type: Date,

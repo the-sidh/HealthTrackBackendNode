@@ -6,7 +6,7 @@ const { ObjectId } = require('mongodb').ObjectId;
 const { Alimentacao } = require('../models/alimentacao');
 const redirectTo = '/alimentacao';
 var app = require('../healthTrack').app;
-const { tipoAlimentacao } = require('../models/tipo-alimentacao'); 
+const { tipoAlimentacao } = require('../models/tipo-alimentacao');
 const { authenticate } = require('../middleware/authenticate');
 
 app.use(bodyParser.urlencoded({
@@ -24,37 +24,41 @@ app.post('/save_alimentacao/:id', authenticate, (req, res) => {
 });
 
 app.post('/alimentacao', authenticate, (req, res) => {
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
+    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao']);
     body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
-    var alimentacao = new Alimentacao({
-        tipo: body.tipo,
-        data: body.data,
-        calorias: body.calorias,
-        descricao: body.descricao,
-        _creator: user._id,
-    });
-    
-    saveMedida(alimentacao, res);
+    if (user) {
+        var alimentacao = new Alimentacao({
+            tipo: body.tipo,
+            data: body.data,
+            calorias: body.calorias,
+            descricao: body.descricao,
+            _creator: user._id,
+        });
+
+        saveMedida(alimentacao, res);
+    }
 });
 
 
 app.use(bodyParser.json());
 
 app.get('/alimentacao', authenticate, (req, res) => {
-    Alimentacao.findByUser(req.session.user).then(
-        (Alimentacao) => {
-            res.render('alimentacao.hbs', { Alimentacao});
-        }, (err) => {
-            res.send(400);
-        }).catch((err) => {
-            res.status(401).send();
-        });
-
+    const user = req.session.user;
+    if (user) {
+        Alimentacao.findByUser(req.session.user).then(
+            (Alimentacao) => {
+                res.render('alimentacao.hbs', { Alimentacao });
+            }, (err) => {
+                res.send(400);
+            }).catch((err) => {
+                res.status(401).send();
+            });
+    }
 });
 
 app.get('/add_alimentacao', authenticate, (req, res) => {
-    res.render('add_alimentacao.hbs', {tipoAlimentacao});
+    res.render('add_alimentacao.hbs', { tipoAlimentacao });
 });
 
 app.patch('/alimentacao/:id', authenticate, (req, res) => {
@@ -113,7 +117,7 @@ function deleteMedida(req, res) {
 
 function updateMedida(req, res) {
     var id = req.params.id;
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
+    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao']);
     if (ObjectId.isValid(id)) {
         Alimentacao.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {

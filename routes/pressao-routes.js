@@ -27,35 +27,39 @@ app.post('/pressao', authenticate, (req, res) => {
     var body = _.pick(req.body, ['sistolica', 'diastolica', 'data']);
     body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
+    if (user) {
+        var pressao = new Pressao({
+            sistolica: body.sistolica,
+            diastolica: body.diastolica,
+            data: body.data,
+            _creator: user._id,
+        });
 
-    var pressao = new Pressao({
-        sistolica: body.sistolica,
-        diastolica : body.diastolica,
-        data: body.data,
-        _creator: user._id,
-    });
-
-    saveMedida(pressao, res);
+        saveMedida(pressao, res);
+    }
 });
 
 app.use(bodyParser.json());
 
 app.get('/pressao', authenticate, (req, res) => {
-    Pressao.findByUser(req.session.user).then(
-        (pressoes) => {
-            res.render('pressao.hbs', { pressoes });
-        }, (err) => {
-            res.send(400);
-        }).catch((err) => {
-            res.status(401).send();
-        });
+    const user = req.session.user;
+    if (user) {
+        Pressao.findByUser(user).then(
+            (pressoes) => {
+                res.render('pressao.hbs', { pressoes });
+            }, (err) => {
+                res.send(400);
+            }).catch((err) => {
+                res.status(401).send();
+            });
+    }
 });
 
 app.get('/addPressao', authenticate, (req, res) => {
     res.render('add_pressao.hbs');
 });
 
-app.patch('/pressao/:id',authenticate, (req, res) => {
+app.patch('/pressao/:id', authenticate, (req, res) => {
     updateMedida(req, res);
 });
 
@@ -75,7 +79,7 @@ app.get('/pressao/:id', authenticate, (req, res) => {
 
 });
 
-app.delete('/pressao/:id',authenticate, (req, res) => {
+app.delete('/pressao/:id', authenticate, (req, res) => {
     deleteMedida(req, res);
 });
 

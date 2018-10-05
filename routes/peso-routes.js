@@ -28,7 +28,6 @@ app.post('/peso', authenticate, (req, res) => {
     req.body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
     if (user) {
-
         var peso = new Peso({
             quilos: req.body.quilos,
             data: req.body.data,
@@ -43,14 +42,17 @@ app.post('/peso', authenticate, (req, res) => {
 app.use(bodyParser.json());
 
 app.get('/peso', authenticate, (req, res) => {
-    Peso.findByUser(req.session.user).then(
-        (pesos) => {
-            res.render('peso.hbs', { pesos });
-        }, (err) => {
-            res.send(400);
-        }).catch((err) => {
-            res.status(401).send();
-        });
+    const user = req.session.user;
+    if (user) {
+        Peso.findByUser(user).then(
+            (pesos) => {
+                res.render('peso.hbs', { pesos });
+            }, (err) => {
+                res.send(400);
+            }).catch((err) => {
+                res.status(401).send();
+            });
+    }
 });
 
 app.get('/addPeso', authenticate, (req, res) => {

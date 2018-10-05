@@ -6,7 +6,7 @@ const { ObjectId } = require('mongodb').ObjectId;
 const { AtividadeFisica } = require('../models/atividade-fisica');
 const redirectTo = '/atividade-fisica';
 var app = require('../healthTrack').app;
-const { tipoAtividade } = require('../models/tipo-atividade'); 
+const { tipoAtividade } = require('../models/tipo-atividade');
 const { authenticate } = require('../middleware/authenticate');
 
 app.use(bodyParser.urlencoded({
@@ -24,37 +24,41 @@ app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
 });
 
 app.post('/atividade-fisica', authenticate, (req, res) => {
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
-    body.data = moment(req.body.data, dateFormat).toDate();
     var user = req.session.user;
-    var atividadeFisica = new AtividadeFisica({
-        tipo: body.tipo,
-        data: body.data,
-        calorias: body.calorias,
-        descricao: body.descricao,
-        _creator: user._id,
-    });
-    
-    saveMedida(atividadeFisica, res);
+    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao']);
+    body.data = moment(req.body.data, dateFormat).toDate();    
+    if (user) {
+        var atividadeFisica = new AtividadeFisica({
+            tipo: body.tipo,
+            data: body.data,
+            calorias: body.calorias,
+            descricao: body.descricao,
+            _creator: user._id,
+        });
+
+        saveMedida(atividadeFisica, res);
+    }
 });
 
 
 app.use(bodyParser.json());
 
 app.get('/atividade-fisica', authenticate, (req, res) => {
-    AtividadeFisica.findByUser(req.session.user).then(
-        (AtividadeFisica) => {
-            res.render('atividade_fisica.hbs', { AtividadeFisica});
-        }, (err) => {
-            res.send(400);
-        }).catch((err) => {
-            res.status(401).send();
-        });
-
+    const user = req.session.user;
+    if (user) {
+        AtividadeFisica.findByUser(user).then(
+            (AtividadeFisica) => {
+                res.render('atividade_fisica.hbs', { AtividadeFisica });
+            }, (err) => {
+                res.send(400);
+            }).catch((err) => {
+                res.status(401).send();
+            });
+    }
 });
 
 app.get('/add-atividade-fisica', authenticate, (req, res) => {
-    res.render('add_atividade_fisica.hbs', {tipoAtividade});
+    res.render('add_atividade_fisica.hbs', { tipoAtividade });
 });
 
 app.patch('/atividade-fisica/:id', authenticate, (req, res) => {
@@ -113,7 +117,7 @@ function deleteMedida(req, res) {
 
 function updateMedida(req, res) {
     var id = req.params.id;
-    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao' ]);
+    var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao']);
     if (ObjectId.isValid(id)) {
         AtividadeFisica.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {
