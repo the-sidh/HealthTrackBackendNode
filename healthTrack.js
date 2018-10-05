@@ -20,7 +20,7 @@ const { authenticate } = require('./middleware/authenticate');
 
 app.set('view engine', 'hbs');
 
-app.use(session({ secret: 'eNJKDJDJJASDN*747e]455Snjnssdjsdjnsjjs', cookie: { maxAge: 60000 } }));
+app.use(session({ secret: 'eNJKDJDJJASDN*747e]455Snjnssdjsdjnsjjs', cookie: { maxAge: 60099000 } ,resave: false}));
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('formatDate', (datetime) => {

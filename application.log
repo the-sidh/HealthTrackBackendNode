@@ -39,3 +39,7 @@
 [2018-10-04T23:56:44.920] [INFO] default - user nao existente na secao, req: /
 [2018-10-04T23:59:15.425] [INFO] default - user nao existente na secao, req: /
 [2018-10-04T23:59:29.228] [INFO] default - user nao existente na secao, req: /atividade-fisica/
+[2018-10-05T00:03:22.337] [INFO] default - user nao existente na secao, req: /atividade-fisica/
+[2018-10-05T00:04:26.565] [INFO] default - user nao existente na secao, req: /pressao/
+[2018-10-05T00:04:26.567] [ERROR] default - No user
+[2018-10-05T00:17:03.104] [INFO] default - user nao existente na secao, req: /alimentacao
