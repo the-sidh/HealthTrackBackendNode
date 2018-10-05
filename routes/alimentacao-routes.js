@@ -8,6 +8,7 @@ const redirectTo = '/alimentacao';
 var app = require('../healthTrack').app;
 const { tipoAlimentacao } = require('../models/tipo-alimentacao');
 const { authenticate } = require('../middleware/authenticate');
+const { logger } = require('../log/logger');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -50,9 +51,11 @@ app.get('/alimentacao', authenticate, (req, res) => {
             (Alimentacao) => {
                 res.render('alimentacao.hbs', { Alimentacao });
             }, (err) => {
-                res.send(400);
+                logger.error(`${err}`);
+                res.redirect('/alimentacao');
             }).catch((err) => {
-                res.status(401).send();
+                logger.error(`${err}`);
+                res.redirect('/alimentacao');
             });
     }
 });
@@ -77,7 +80,8 @@ app.get('/alimentacao/:id', authenticate, (req, res) => {
                 });
         });
     } else {
-        res.status(400).send('invalid id');
+        logger.error(`${err}`);
+        res.redirect('/alimentacao');
     }
 
 });
@@ -92,7 +96,8 @@ var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
         res.redirect(redirectTo);
     }).catch((err) => {
-        res.status(400).send(err);
+        logger.error(`${err}`);
+        res.redirect('/alimentacao');
     });
 };
 
@@ -105,12 +110,14 @@ function deleteMedida(req, res) {
                 res.redirect(redirectTo);
             }
             else {
-                res.status(400).send('empty');
+                logger.error(`empty`);
+                res.redirect('/alimentacao');
             }
         });
     }
     else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/alimentacao');
     }
 }
 
@@ -125,13 +132,16 @@ function updateMedida(req, res) {
                     res.redirect(redirectTo);
                 }
                 else {
-                    res.status(400).send('empty');
+                    logger.error(`empty`);
+                    res.redirect('/alimentacao');
                 }
             }, (err) => {
-                res.status(400).send(err);
+                logger.error(`${err}`);
+                res.redirect('/alimentacao');
             });
     }
     else {
-        res.status(400).send('invalid id');
+        logger.error('invalid id');
+        res.redirect('/alimentacao');
     }
 }

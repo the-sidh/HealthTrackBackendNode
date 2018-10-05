@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb').ObjectId;
 const { Peso } = require('../models/peso');
 const { authenticate } = require('../middleware/authenticate');
+const { logger } = require('../log/logger');
 
 var app = require('../healthTrack').app;
 
@@ -48,9 +49,11 @@ app.get('/peso', authenticate, (req, res) => {
             (pesos) => {
                 res.render('peso.hbs', { pesos });
             }, (err) => {
-                res.send(400);
+                logger.error(`${err}`);
+                res.redirect('/peso');
             }).catch((err) => {
-                res.status(401).send();
+                logger.error(`${err}`);
+                res.redirect('/peso');
             });
     }
 });
@@ -74,7 +77,8 @@ app.get('/peso/:id', authenticate, (req, res) => {
                 });
         });
     } else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/peso');
     }
 
 });
@@ -88,7 +92,8 @@ var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
         res.redirect('/peso');
     }).catch((err) => {
-        res.status(400).send(err);
+        logger.error(`Erro ao tentar salvar medida: ${err}`);
+        res.redirect('/peso');
     });
 };
 
@@ -101,12 +106,14 @@ function deletePeso(req, res) {
                 res.redirect('/peso');
             }
             else {
-                res.status(400).send('empty');
+                logger.error(`Erro ao tentar deletar medida: ${err}`);
+                res.redirect('/peso');
             }
         });
     }
     else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/peso');
     }
 }
 
@@ -120,13 +127,16 @@ function updatePeso(req, res) {
                     res.redirect('/peso');
                 }
                 else {
-                    res.status(400).send('empty');
+                    logger.error(`empty`);
+                    res.redirect('/peso');
                 }
             }, (err) => {
-                res.status(400).send(err);
+                logger.error(`${err}`);
+                res.redirect('/peso');
             });
     }
     else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/peso');
     }
 }

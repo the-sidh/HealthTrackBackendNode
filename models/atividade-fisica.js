@@ -18,8 +18,7 @@ var schema = new mongoose.Schema({
     descricao : {
         type: String,
         trim: true,
-        required: false,
-        minlength: 1,
+        required: false
         },
 
     data: {
@@ -45,7 +44,7 @@ schema.statics.findByUser = function (user){
         
     var medida = AtividadeFisica.find({
         _creator: user._id
-    });
+    }).sort({ "data": -1 });
 
     return medida;
 };

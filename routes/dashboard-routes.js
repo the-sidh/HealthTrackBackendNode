@@ -7,6 +7,7 @@ const { Peso } = require('../models/peso');
 const { authenticate } = require('../middleware/authenticate');
 const { Pressao } = require('../models/pressao');
 const { User } = require('../models/user');
+const {logger} = require('../log/logger');
 
 var app = require('../healthTrack').app;
 

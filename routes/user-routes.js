@@ -5,6 +5,7 @@ const { authenticate } = require('../middleware/authenticate');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const dateFormat = 'DD/MM/YYYY';
+const {logger} = require('../log/logger');
 
 app.use(bodyParser.json());
 

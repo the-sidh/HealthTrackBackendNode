@@ -38,9 +38,9 @@
             <td>{{this.diastolica}}</td>
 
             <td>{{formatDate this.data}}</td>
-            <td><a href="../pressao/{{this.id}}"><i class="fas fa-edit"></i></a> </td>
+            <td><a href="/pressao/{{this.id}}"><i class="fas fa-edit"></i></a> </td>
             <td>
-              <form id="delete" action="../save_pressao/{{this.id}}" method="post">
+              <form id="delete" action="/save_pressao/{{this.id}}" method="post">
                 <a href="#" onClick="if (confirm('Tem certeza que deseja remover esse registro?')){document.getElementById('delete').submit()}"><i
                     class="fas fa-trash-alt"></i></a></form>
             </td>
@@ -50,7 +50,7 @@
         </tbody>
       </table>
       <form>
-        <a role="button" class="btn btn-primary" href="../addPressao">Nova tomada de press&atilde;o</a>
+        <a role="button" class="btn btn-primary" href="/addPressao">Nova tomada de press&atilde;o</a>
       </form>
 
     </div>

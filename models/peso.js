@@ -31,7 +31,7 @@ schema.statics.findMostRecent = function (user) {
 schema.statics.findByUser = function (user) {
     var pesoFound = Peso.find({
         _creator: user._id,
-    });
+    }).sort({ "data": -1 });
 
     return pesoFound;
 };

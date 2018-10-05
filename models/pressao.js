@@ -38,7 +38,7 @@ schema.statics.findMostRecent = function (user) {
 schema.statics.findByUser = function (user){        
     var medida = Pressao.find({
         _creator: user._id,
-    });
+    }).sort({ "data": -1 });
     return medida;
 };
 

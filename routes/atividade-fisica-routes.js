@@ -8,6 +8,7 @@ const redirectTo = '/atividade-fisica';
 var app = require('../healthTrack').app;
 const { tipoAtividade } = require('../models/tipo-atividade');
 const { authenticate } = require('../middleware/authenticate');
+const { logger } = require('../log/logger');
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -26,7 +27,7 @@ app.post('/save_atividade-fisica/:id', authenticate, (req, res) => {
 app.post('/atividade-fisica', authenticate, (req, res) => {
     var user = req.session.user;
     var body = _.pick(req.body, ['data', 'tipo', 'calorias', 'descricao']);
-    body.data = moment(req.body.data, dateFormat).toDate();    
+    body.data = moment(req.body.data, dateFormat).toDate();
     if (user) {
         var atividadeFisica = new AtividadeFisica({
             tipo: body.tipo,
@@ -50,9 +51,11 @@ app.get('/atividade-fisica', authenticate, (req, res) => {
             (AtividadeFisica) => {
                 res.render('atividade_fisica.hbs', { AtividadeFisica });
             }, (err) => {
-                res.send(400);
+                logger.error(`${err}`);
+                res.redirect('/atividade-fisica');
             }).catch((err) => {
-                res.status(401).send();
+                logger.error(`${err}`);
+                res.redirect('/atividade-fisica');
             });
     }
 });
@@ -77,7 +80,9 @@ app.get('/atividade-fisica/:id', authenticate, (req, res) => {
                 });
         });
     } else {
-        res.status(400).send('invalid id');
+        const err = 'invalid id';
+        logger.error(`${err}`);
+        res.redirect('/atividade-fisica');
     }
 
 });
@@ -92,7 +97,9 @@ var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
         res.redirect(redirectTo);
     }).catch((err) => {
-        res.status(400).send(err);
+        logger.error(`${err}`);
+        res.redirect('/atividade-fisica');
+
     });
 };
 
@@ -105,12 +112,17 @@ function deleteMedida(req, res) {
                 res.redirect(redirectTo);
             }
             else {
-                res.status(400).send('empty');
+                const err = 'emty';
+                logger.error(`${err}`);
+                res.redirect('/atividade-fisica');
             }
         });
     }
     else {
-        res.status(400).send('invalid id');
+        const err = 'invalid id';
+        logger.error(`${err}`);
+        res.redirect('/atividade-fisica');
+
     }
 }
 
@@ -125,13 +137,21 @@ function updateMedida(req, res) {
                     res.redirect(redirectTo);
                 }
                 else {
-                    res.status(400).send('empty');
+                    const err = 'empty';
+                    logger.error(`${err}`);
+                    res.redirect('/atividade-fisica');
+
                 }
             }, (err) => {
-                res.status(400).send(err);
+                logger.error(`${err}`);
+                res.redirect('/atividade-fisica');
+
             });
     }
     else {
-        res.status(400).send('invalid id');
+        const err = 'invalid id';
+        logger.error(`${err}`);
+        res.redirect('/atividade-fisica');
+
     }
 }

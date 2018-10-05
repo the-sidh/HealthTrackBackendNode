@@ -40,15 +40,15 @@
              <td>{{this.calorias}}</td>
             <td>{{formatDate this.data}}</td>       
             
-            <td><a href="../atividade-fisica/{{this.id}}"><i class="fas fa-edit"></i></a> </td>           
-            <td><form id="delete" action="../save_atividade-fisica/{{this.id}}" method="post">
+            <td><a href="/atividade-fisica/{{this.id}}"><i class="fas fa-edit"></i></a> </td>           
+            <td><form id="delete" action="/save_atividade-fisica/{{this.id}}" method="post">
               <a href="#" onClick="if (confirm('Tem certeza que deseja remover esse registro?')){document.getElementById('delete').submit()}"><i class="fas fa-trash-alt"></i></a></form></td>
               </tr>
              {{/each}}   
         </tbody>       
       </table>
       <form>
-        <a role="button" class="btn btn-primary" href="../add-atividade-fisica">Nova atividade f&iacute;sica</a>       
+        <a role="button" class="btn btn-primary" href="/add-atividade-fisica">Nova atividade f&iacute;sica</a>       
       </form>
 
     </div>

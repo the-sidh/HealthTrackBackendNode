@@ -1,0 +1,41 @@
+[2018-10-04T23:04:04.525] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:23:59.533] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:27:31.355] [INFO] default - user nao existente na secao, req: /alimentacao/
+[2018-10-04T23:28:12.237] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:29:02.830] [INFO] default - user nao existente na secao, req: /addPeso
+[2018-10-04T23:29:28.813] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:33:50.037] [INFO] default - user nao existente na secao, req: /addPeso
+[2018-10-04T23:34:22.009] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:37:02.278] [INFO] default - user nao existente na secao, req: /
+[2018-10-04T23:38:10.147] [ERROR] default - ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-04T23:38:10.165] [INFO] default - user nao existente na secao, req: /atividade-fisica
+[2018-10-04T23:38:28.865] [ERROR] default - ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data", descricao: Path `descricao` (``) is shorter than the minimum allowed length (1).
+[2018-10-04T23:41:14.312] [INFO] default - user nao existente na secao, req: /add-atividade-fisica
+[2018-10-04T23:42:40.400] [INFO] default - user nao existente na secao, req: /
+[2018-10-04T23:43:55.564] [INFO] default - user nao existente na secao, req: /alimentacao
+[2018-10-04T23:45:55.650] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-04T23:46:19.104] [ERROR] default - ValidationError: descricao: Path `descricao` (``) is shorter than the minimum allowed length (1).
+[2018-10-04T23:47:44.129] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-04T23:48:47.254] [INFO] default - user nao existente na secao, req: /pressao/
+[2018-10-04T23:51:59.774] [ERROR] default - invalid id
+[2018-10-04T23:55:50.118] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.134] [ERROR] default - invalid id
+[2018-10-04T23:55:50.142] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.144] [ERROR] default - invalid id
+[2018-10-04T23:55:50.148] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.149] [ERROR] default - invalid id
+[2018-10-04T23:55:50.203] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.204] [ERROR] default - invalid id
+[2018-10-04T23:55:50.211] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.212] [ERROR] default - invalid id
+[2018-10-04T23:55:50.218] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:50.219] [ERROR] default - invalid id
+[2018-10-04T23:55:55.233] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:55.234] [ERROR] default - invalid id
+[2018-10-04T23:55:55.241] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:55.242] [ERROR] default - invalid id
+[2018-10-04T23:55:55.246] [INFO] default - user nao existente na secao, req: /pressao/dashboard.html
+[2018-10-04T23:55:55.247] [ERROR] default - invalid id
+[2018-10-04T23:56:44.920] [INFO] default - user nao existente na secao, req: /
+[2018-10-04T23:59:15.425] [INFO] default - user nao existente na secao, req: /
+[2018-10-04T23:59:29.228] [INFO] default - user nao existente na secao, req: /atividade-fisica/

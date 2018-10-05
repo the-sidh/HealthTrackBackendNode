@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb').ObjectId;
 const { Pressao } = require('../models/pressao');
 const { authenticate } = require('../middleware/authenticate');
-
+const { logger } = require('../log/logger');
 var app = require('../healthTrack').app;
 
 app.use(bodyParser.urlencoded({
@@ -48,10 +48,15 @@ app.get('/pressao', authenticate, (req, res) => {
             (pressoes) => {
                 res.render('pressao.hbs', { pressoes });
             }, (err) => {
-                res.send(400);
+                logger.error(`${err}`);
+                res.redirect('/pressao');
+
             }).catch((err) => {
-                res.status(401).send();
+                logger.error(`${err}`);
+                res.redirect('/pressao');
             });
+    }else{
+        logger.error(`No user`);
     }
 });
 
@@ -74,7 +79,8 @@ app.get('/pressao/:id', authenticate, (req, res) => {
                 });
         });
     } else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/pressao');
     }
 
 });
@@ -88,7 +94,8 @@ var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
         res.redirect('/pressao');
     }).catch((err) => {
-        res.status(400).send(err);
+        logger.error(`${err}`);
+        res.redirect('/pressao');
     });
 };
 
@@ -101,7 +108,8 @@ function deleteMedida(req, res) {
                 res.redirect('/pressao');
             }
             else {
-                res.status(400).send('empty');
+                logger.error(`${err}`);
+                res.redirect('/empty');
             }
         });
     }
@@ -120,13 +128,16 @@ function updateMedida(req, res) {
                     res.redirect('/pressao');
                 }
                 else {
-                    res.status(400).send('empty');
+                    logger.error(`empty`);
+                    res.redirect('/pressao');
                 }
             }, (err) => {
-                res.status(400).send(err);
+                logger.error(`${err}`);
+                res.redirect('/pressao');
             });
     }
     else {
-        res.status(400).send('invalid id');
+        logger.error(`invalid id`);
+        res.redirect('/pressao');
     }
 }
