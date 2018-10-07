@@ -1,0 +1,60 @@
+<!-- Declaração obrigatória para o funcionamento do framework. -->
+<!Doctype html>
+<html lang="en">
+
+{{>header}}
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <h2>HealthTrack</h2>
+    </div>
+    <div class="row justify-content-between">
+      <section class="col-md-auto">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Edi&ccedil;&atilde;o de Cadastro</li>
+          </ol>
+        </nav>
+      </section>
+      <section class="col-md-7">
+        <p class="font-weight-bold"></p>
+      </section>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
+      <form class="form-horizontal" action="/user/update/" method="post" id="edit" card col-md-4>
+        <div class="form-group ">
+          <label for="nome">Nome completo:</label>
+          <input type="text" class="form-control" name="nome" value="{{user.nome}}">
+        </div>
+        <div class="form-group ">
+          <label for="dataNasc">Data de nascimento:</label>
+          <input type="text" class="form-control" name="dataNasc" value="{{formatDate user.dataNasc}}">
+        </div>
+        <div class="form-group ">
+          <label for="nome">G&ecirc;nero:</label>
+          <select name="genero" class="form-control">
+            {{#each generos}}
+            <option value="{{this}}" {{selected this ../user.genero}}>{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group ">
+          <label for="altura">Altura:</label>
+          <input type="text" class="form-control" name="altura" value="{{user.altura}}">
+        </div>
+        <div class="form-group ">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control" id="email" value="{{user.email}}">
+        </div>
+        <div>
+          <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('edit').submit();">Salvar</a>
+          <a href="/" role="button" class="btn btn-danger">Cancelar</a>
+        </div>
+      </form>
+
+    </div>
+
+</body>
+
+</html>

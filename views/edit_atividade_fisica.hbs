@@ -31,7 +31,7 @@
           <label for="tipo ">Tipo</label>
           <select class="form-control" name="tipo">
             {{#each tipoAtividade}}
-            <option value="{{this}}">{{this}}</option>
+            <option value="{{this}}" {{selected this ../atividade.tipo}}>{{this}}</option>
             {{/each}}
           </select>
         </div>

@@ -5,32 +5,10 @@ const { authenticate } = require('../middleware/authenticate');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 const dateFormat = 'DD/MM/YYYY';
-const {logger} = require('../log/logger');
+const { logger } = require('../log/logger');
+const { generos } = require('../models/genero');
 
 app.use(bodyParser.json());
-
-app.get('/user',  (req, res) => {
-    if (req.query.email) {
-        console.log(req.query.email);
-        User.findOne({ email: req.query.email }).then((user) => {
-            if (user) {
-                res.status(200).send({ user });
-            } else {
-                res.status(401).send('empty');
-            }
-
-        }, (err) => {
-            res.status(401).send(err);
-        });
-    }
-    else {
-        User.find().then((users) => {
-            res.status(200).send({ users });
-        });
-
-    }
-});
-
 
 app.post('/user', (req, res) => {
     var body = _.pick(req.body, ['email', 'password', 'nome', 'altura', 'dataNasc', 'genero']);
@@ -52,9 +30,25 @@ app.post('/user', (req, res) => {
     });
 });
 
-app.get('/user/me/',authenticate, (req, res) => {
-    res.send(req.user);
+app.get('/user-edit', authenticate, (req, res) => {
+    let user = req.session.user;
+    if (user) {
+        User.findByEmail(user.email).then((userFound) => {
+            res.render('edit_cadastro.hbs',
+                {
+                    user: userFound,
+                    req,
+                    generos
+                });
+        });
+    } else {
+        let err = 'usuario nao encontrado';
+        logger.error(`${err}`);
+        res.redirect('/');
+    }
+
 });
+
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -83,7 +77,7 @@ app.post('/user/register/', (req, res) => {
         dataNasc: body.dataNasc,
         genero: body.genero,
         email: body.email,
-        password : body.password
+        password: body.password
     });
 
     user.save().then(() => {
@@ -94,7 +88,36 @@ app.post('/user/register/', (req, res) => {
     });
 });
 
+
+app.post('/user/update/', authenticate, (req, res) => {
+    var body = _.pick(req.body, ['email', 'password', 'nome', 'altura', 'dataNasc', 'genero']);
+    body.dataNasc = moment(body.dataNasc, dateFormat).toDate();
+    let user = req.session.user;
+    if (user) {
+        User.findByEmail(user.email).then((userFound) => {
+            id = userFound._id;
+            return User.findByIdAndUpdate(id.toHexString(), { $set: body }, { new: true })
+        }).then((doc) => {
+                if (doc) {
+                    res.redirect('/');
+                }
+                else {
+                    logger.error(`empty`);
+                    res.redirect('/');
+                }
+            }, (err) => {
+                logger.error(`${err}`);
+                res.redirect('/');
+            });
+    }
+    else {
+        logger.error('invalid id');
+        res.redirect('/alimentacao');
+    }
+
+});
+
 app.get('/user/logout/', (req, res) => {
-          req.session.user = undefined;
-          res.redirect('/login');
+    req.session.user = undefined;
+    res.redirect('/login');
 });

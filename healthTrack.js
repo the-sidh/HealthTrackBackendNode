@@ -9,32 +9,19 @@ if (env === 'development') {
 }
 
 const express = require('express');
-const hbs = require('hbs');
-const moment = require('moment');
-const dateFormat = 'DD/MM/YYYY';
+const {hbs} = require('./handlebars');
 const port = process.env.PORT || 3000;
 var app = express();
 var { mongoose } = require('./db/mongoose');
 const session = require('express-session');
 const { authenticate } = require('./middleware/authenticate');
-
-app.set('view engine', 'hbs');
-
 app.use(session({ secret: 'eNJKDJDJJASDN*747e]455Snjnssdjsdjnsjjs', cookie: { maxAge: 60099000 } ,resave: false}));
-
-hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('formatDate', (datetime) => {
-    return moment(datetime).format(dateFormat);
-});
-
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
-
 
 app.get('/login', (req, res) => {
     res.render('login.hbs');
 });
-
 module.exports = { mongoose, app };
 const dashboardRoutes = require('./routes/dashboard-routes');
 const userRoutes = require('./routes/user-routes');
@@ -43,3 +30,4 @@ const pressaoRoutes = require('./routes/pressao-routes');
 const alimentacaoRoutes = require('./routes/alimentacao-routes');
 const atividadeRoutes = require('./routes/atividade-fisica-routes');
 app.listen(process.env.PORT);
+
