@@ -41,10 +41,6 @@ app.get('/user-edit', authenticate, (req, res) => {
                     generos
                 });
         });
-    } else {
-        let err = 'usuario nao encontrado';
-        logger.error(`${err}`);
-        res.redirect('/');
     }
 
 });
@@ -109,10 +105,6 @@ app.post('/user/update/', authenticate, (req, res) => {
                 logger.error(`${err}`);
                 res.redirect('/');
             });
-    }
-    else {
-        logger.error('invalid id');
-        res.redirect('/alimentacao');
     }
 
 });

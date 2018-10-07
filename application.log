@@ -137,3 +137,54 @@
 [2018-10-07T01:21:55.721] [INFO] default - user nao existente na secao, req: /alimentacao/
 [2018-10-07T01:22:11.952] [ERROR] default - CastError: Cast to date failed for value "Invalid Date" at path "dataNasc"
 [2018-10-07T01:24:08.304] [INFO] default - user nao existente na secao, req: /atividade-fisica/
+[2018-10-07T01:27:55.259] [INFO] default - user nao existente na secao, req: /alimentacao/
+[2018-10-07T12:05:51.232] [INFO] default - user nao existente na secao, req: /
+[2018-10-07T12:06:20.124] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.144] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:20.152] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.154] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:20.158] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.158] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:20.210] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.211] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:20.216] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.216] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:20.221] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:20.222] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:25.272] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:25.276] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:25.297] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:25.300] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:25.330] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:25.333] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:55.353] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:55.354] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:55.358] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:55.359] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:55.365] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:55.366] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:57.415] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:57.417] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:57.421] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:57.424] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:06:57.430] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:06:57.431] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:07:02.827] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:07:15.989] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:08:21.647] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:08:25.257] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:08:29.567] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:08:36.127] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:08:51.830] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:10:36.840] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:10:40.417] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:10:40.427] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:10:41.523] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:10:41.536] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:10:42.533] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:10:46.782] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:11:04.528] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:11:10.062] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-07T12:16:17.115] [ERROR] default - usuario nao encontrado
+[2018-10-07T12:16:17.144] [INFO] default - user nao existente na secao, req: /
+[2018-10-07T12:16:51.673] [INFO] default - user nao existente na secao, req: /addPeso
