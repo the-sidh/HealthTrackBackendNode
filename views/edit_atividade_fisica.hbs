@@ -38,19 +38,23 @@
         <div class="form-group">
           <label for="desc ">Descri&ccedil;&atilde;o:</label>
           <input type="text" class="form-control" name="descricao" value="{{atividade.descricao}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group">
           <label for="data ">Calorias gastas (em kcal)</label>
-          <input type="text" class="form-control" name="calorias" value="{{atividade.calorias}}">
+          <input type="text" class="form-control" name="calorias" id="cal" value="{{atividade.calorias}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group">
           <label for="data ">Data / Hora</label>
-          <input type="text" class="form-control" name="data" value="{{formatDate atividade.data}}" </div>
+          <input type="text" class="form-control" name="data" id="data" value="{{formatDate atividade.data}}">
+          <span class="alerta"></span>
+        </div>
 
-          <div>
-            <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('edit').submit(); ">Salvar</a>
-            <a href="atividade_fisica.html" role="button" class="btn btn-danger ">Cancelar</a>
-          </div>
+        <div>
+          <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('edit').submit(); ">Salvar</a>
+          <a href="atividade_fisica.html" role="button" class="btn btn-danger ">Cancelar</a>
+        </div>
   </form>
 
   </div>

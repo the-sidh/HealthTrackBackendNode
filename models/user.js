@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+var rootUrl = process.env.ROOT_URL || 'http://localhost:3000/';
 
 var userSchema = new mongoose.Schema({
     email: {
@@ -43,7 +44,10 @@ var userSchema = new mongoose.Schema({
         type: Number,
         required: true,
         minlength: 6
-    }
+    },
+    reset_password_token: {
+        type: String
+    },
 
 
 });

@@ -1,0 +1,37 @@
+  <!-- Declaração obrigatória para o funcionamento do framework. -->
+  <!Doctype html>
+  <html lang="en">
+
+  
+{{>header}}
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <h2>HealthTrack</h2>
+      </div>
+      <div class="row justify-content-between">
+        <section class="col-md-auto">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">             
+             <li class="breadcrumb-item active" aria-current="page">Senha</li>
+           </ol>  
+         </nav>
+       </section>
+       <section class="col-md-7"><p class="font-weight-bold"></p></section>
+     </div>
+     <div class="card col-md-4" style="padding: 20px;" >
+       <form class="form-horizontal" action ="/requestPasswordReset/" id="reset" method="post" card col-md-4>
+        <div class="form-group " >
+          <label for="nome">Email:</label>
+          <input type="text" class="form-control" name="email" placeholder="Entre seu email">
+        </div>        
+        <div>
+           <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('reset').submit(); ">Confirmar</a>
+         <a href="index.html" role="button" class="btn btn-danger">Cancelar</a>  
+       </div>
+     </form>
+
+   </div>
+
+ </body>
+ </html>

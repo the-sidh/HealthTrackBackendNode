@@ -25,11 +25,13 @@
       <form class="form-horizontal" action="/user/update/" method="post" id="edit" card col-md-4>
         <div class="form-group ">
           <label for="nome">Nome completo:</label>
-          <input type="text" class="form-control" name="nome" value="{{user.nome}}">
+          <input type="text" class="form-control" name="nome" id="nome" value="{{user.nome}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="dataNasc">Data de nascimento:</label>
-          <input type="text" class="form-control" name="dataNasc" value="{{formatDate user.dataNasc}}">
+          <input type="text" class="form-control" name="dataNasc" id="data" value="{{formatDate user.dataNasc}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="nome">G&ecirc;nero:</label>
@@ -41,11 +43,13 @@
         </div>
         <div class="form-group ">
           <label for="altura">Altura:</label>
-          <input type="text" class="form-control" name="altura" value="{{user.altura}}">
+          <input type="text" class="form-control" name="altura" id="altura" value="{{user.altura}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="email">Email:</label>
           <input type="text" class="form-control" id="email" value="{{user.email}}">
+          <span class="alerta"></span>
         </div>
         <div>
           <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('edit').submit();">Salvar</a>

@@ -6,6 +6,7 @@ const { ObjectId } = require('mongodb').ObjectId;
 const { Peso } = require('../models/peso');
 const { authenticate } = require('../middleware/authenticate');
 const { logger } = require('../log/logger');
+const querystring = require('querystring');
 
 var app = require('../healthTrack').app;
 
@@ -44,10 +45,16 @@ app.use(bodyParser.json());
 
 app.get('/peso', authenticate, (req, res) => {
     const user = req.session.user;
+    const error_message = req.query.error_message;
+    const success_message = req.query.success_message;
     if (user) {
         Peso.findByUser(user).then(
             (pesos) => {
-                res.render('peso.hbs', { pesos });
+                res.render('peso.hbs', {
+                    pesos,
+                    error_message,
+                    success_message,
+                });
             }, (err) => {
                 logger.error(`${err}`);
                 res.redirect('/peso');
@@ -90,10 +97,17 @@ app.delete('/peso/:id', authenticate, (req, res) => {
 
 var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
-        res.redirect('/peso');
+        const query = querystring.stringify({
+            'success_message': 'Peso cadastrado com sucesso'
+        });
+        res.redirect('/peso?' + query);
     }).catch((err) => {
-        logger.error(`Erro ao tentar salvar medida: ${err}`);
-        res.redirect('/peso');
+        const error = `Erro ao tentar salvar medida: ${err}`;
+        logger.error(error);
+        const query = querystring.stringify({
+            'error_message': error
+        });
+        res.redirect('/peso?' + query);
     });
 };
 
@@ -124,11 +138,18 @@ function updatePeso(req, res) {
         Peso.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {
                 if (doc) {
-                    res.redirect('/peso');
+                    res.redirect('/peso', {
+                        error_message: req.params.error_message,
+                        success_message: req.params.success_message,
+                    });
                 }
                 else {
                     logger.error(`empty`);
-                    res.redirect('/peso');
+                    res.redirect('/peso', {
+                        error_message: req.params.error_message,
+                        success_message: req.params.success_message,
+                    });
+
                 }
             }, (err) => {
                 logger.error(`${err}`);

@@ -94,10 +94,16 @@ app.delete('/alimentacao/:id', authenticate, (req, res) => {
 
 var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
-        res.redirect(redirectTo);
+        res.redirect('/alimentacao', {
+            error_message: req.params.error_message,
+            success_message: req.params.success_message,
+        });
     }).catch((err) => {
         logger.error(`${err}`);
-        res.redirect('/alimentacao');
+        res.redirect('/alimentacao', {
+            error_message : req.params.error_message,
+            success_message :  req.params.success_message,
+        });   
     });
 };
 
@@ -133,11 +139,17 @@ function updateMedida(req, res) {
                 }
                 else {
                     logger.error(`empty`);
-                    res.redirect('/alimentacao');
+                    res.redirect('/alimentacao', {
+                        error_message: req.params.error_message,
+                        success_message: req.params.success_message,
+                    });
                 }
             }, (err) => {
                 logger.error(`${err}`);
-                res.redirect('/alimentacao');
+                res.redirect('/alimentacao', {
+                    error_message: req.params.error_message,
+                    success_message: req.params.success_message,
+                });
             });
     }
     else {

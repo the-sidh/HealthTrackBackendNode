@@ -46,6 +46,8 @@ app.get('/', authenticate, (req, res) => {
                 statusPressao = getStatusPressao(pressaoFound);
             }
             res.render('dashboard.hbs', {
+                error_message : req.query.error_message,
+                success_message : req.query.success_message,    
                 peso: pesoFound,
                 pressao: pressaoFound,
                 user: completeUser,

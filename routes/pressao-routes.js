@@ -6,6 +6,7 @@ const { ObjectId } = require('mongodb').ObjectId;
 const { Pressao } = require('../models/pressao');
 const { authenticate } = require('../middleware/authenticate');
 const { logger } = require('../log/logger');
+const querystring = require('querystring');
 var app = require('../healthTrack').app;
 
 app.use(bodyParser.urlencoded({
@@ -55,7 +56,7 @@ app.get('/pressao', authenticate, (req, res) => {
                 logger.error(`${err}`);
                 res.redirect('/pressao');
             });
-    }else{
+    } else {
         logger.error(`No user`);
     }
 });
@@ -92,10 +93,17 @@ app.delete('/pressao/:id', authenticate, (req, res) => {
 
 var saveMedida = (medida, res) => {
     medida.save().then((doc) => {
-        res.redirect('/pressao');
+        const query = querystring.stringify({
+            'success_message': 'Peso cadastrado com sucesso'
+        });
+        res.redirect('/pressao?' + query);
     }).catch((err) => {
-        logger.error(`${err}`);
-        res.redirect('/pressao');
+        const error = `Erro ao tentar salvar medida: ${err}`;
+        logger.error(error);
+        const query = querystring.stringify({
+            'error_message': error
+        });
+        res.redirect('/pressao?' + query);
     });
 };
 
@@ -121,19 +129,26 @@ function deleteMedida(req, res) {
 function updateMedida(req, res) {
     var id = req.params.id;
     var body = _.pick(req.body, ['data', 'sistolica', 'diastolica']);
+
     if (ObjectId.isValid(id)) {
         Pressao.findByIdAndUpdate(id, { $set: body }, { new: true }).
             then((doc) => {
                 if (doc) {
-                    res.redirect('/pressao');
+                    const query = querystring.stringify({
+                        'success_message': 'Editado com sucesso'
+                    });
+                    res.redirect('/pressao?' + query);
                 }
                 else {
                     logger.error(`empty`);
                     res.redirect('/pressao');
                 }
             }, (err) => {
+                const query = querystring.stringify({
+                    'error_message': `${err}`
+                });
                 logger.error(`${err}`);
-                res.redirect('/pressao');
+                res.redirect('/pressao?' + query);
             });
     }
     else {

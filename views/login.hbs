@@ -1,24 +1,35 @@
-  <!-- Declaração obrigatória para o funcionamento do framework. -->
-  <!Doctype html>
-  <html lang="en">
+<!-- Declaração obrigatória para o funcionamento do framework. -->
+<!Doctype html>
+<html lang="en">
 {{>header}}
+{{#if error_message}}
 
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <h2>HealthTrack</h2>
-      </div>
-      <div class="row justify-content-between">
-        <section class="col-md-auto">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">             
-             <li class="breadcrumb-item active" aria-current="page">In&iacute;cio</li>
-           </ol>  
-         </nav>
-       </section>
-       <section class="col-md-7"><p class="font-weight-bold"></p></section>
-     </div>
-     <div class="card col-md-4" style="padding: 20px;" >
+<body onload="myAlertBottom()">
+{{else if success_message}}
+
+<body onload="myAlertTop()">
+{{else}}
+
+<body>
+  {{/if}}
+
+  <div class="container-fluid">
+    <div class="row">
+      <h2>HealthTrack</h2>
+    </div>
+    <div class="row justify-content-between">
+      <section class="col-md-auto">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">In&iacute;cio</li>
+          </ol>
+        </nav>
+      </section>
+      <section class="col-md-7">
+        <p class="font-weight-bold"></p>
+      </section>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
       <form action="/user/signin/" method="post" id="login">
         <div class="form-group input-group">
 
@@ -26,7 +37,7 @@
           <input type="text" class="form-control" name="email" placeholder="Digite o email">
         </div>
 
-        <div class="form-group input-group">          
+        <div class="form-group input-group">
           <span class="input-group-text" id="pwd"><i class="fas fa-key"></i></span>
           <input type="password" class="form-control" name="password" placeholder="Digite a senha">
         </div>
@@ -35,12 +46,17 @@
           <label><input type="checkbox">Lembrar</label>
         </div>
 
-         <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('login').submit(); ">Entrar
-       </a>
-     </form>
-   </div>
-   <div class="card col-md-4" style="padding: 20px;" ><p>N&atilde;o possui cadastro? Clique <a href="/signup/">aqui</a>!</p></div>
-   <div class="card col-md-4" style="padding: 20px;" ><p>Esqueceu a senha? Clique <a href="remember_senha.html">aqui</a>!</p></div>
+        <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('login').submit(); ">Entrar
+        </a>
+      </form>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
+      <p>N&atilde;o possui cadastro? Clique <a href="/requestPasswordReset/">aqui</a>!</p>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
+      <p>Esqueceu a senha? Clique <a href="/requestPasswordReset/">aqui</a>!</p>
+    </div>
+    {{>alert}}
+</body>
 
- </body>
- </html>
+</html>

@@ -22,11 +22,13 @@
       <form class="form-horizontal" action="/user/register/" method="post" id="signup" card col-md-4>
         <div class="form-group ">
           <label for="nome">Nome completo:</label>
-          <input type="text" class="form-control" name="nome" placeholder="Entre seu nome">
+          <input type="text" class="form-control" name="nome" id="nome" placeholder="Entre seu nome">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="nome">Data de nascimento:</label>
-          <input type="text" class="form-control" name="dataNasc" placeholder="DD/MM/AAAA">
+          <input type="text" class="form-control" name="dataNasc" id="data" placeholder="DD/MM/AAAA">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="nome">G&ecirc;nero:</label>
@@ -37,19 +39,23 @@
         </div>
         <div class="form-group ">
           <label for="altura">Altura:</label>
-          <input type="text" class="form-control" name="altura" placeholder="0.00m">
+          <input type="text" class="form-control" name="altura" id="altura" placeholder="0.00m">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="email">Email:</label>
-          <input type="text" class="form-control" name="email" placeholder="Entre seu email">
+          <input type="text" class="form-control" name="email" id="email" placeholder="Entre seu email">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="password">Senha:</label>
-          <input type="password" id="pass1" class="form-control" name="password">
+          <input type="password" id="pass1" class="form-control" id="pwd" name="password">
+          <span class="alerta"></span>
         </div>
         <div class="form-group ">
           <label for="nome">Confirme sua senha:</label>
-          <input type="password" id="pass2" class="form-control" name="password2">
+          <input type="password" id="pass2" class="form-control" id="pwd2" name="password2">
+          <span class="alerta"></span>
         </div>
         <div>
           <a href="#" role="button" class="btn btn-primary" onClick="

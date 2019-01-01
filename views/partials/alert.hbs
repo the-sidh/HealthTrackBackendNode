@@ -1,0 +1,26 @@
+<script>
+    function myAlertTop() {
+        $(".myAlert-top").show();
+        setTimeout(function () {
+            $(".myAlert-top").hide();
+        }, 2000);
+    }
+
+    function myAlertBottom() {
+        $(".myAlert-bottom").show();
+        setTimeout(function () {
+            $(".myAlert-bottom").hide();
+        }, 2000);
+    }
+
+</script>
+
+
+<div class="myAlert-top alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{success_message}}</strong>
+</div>
+<div class="myAlert-bottom alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{error_message}}</strong> 
+</div>

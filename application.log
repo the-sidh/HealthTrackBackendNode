@@ -188,3 +188,179 @@
 [2018-10-07T12:16:17.115] [ERROR] default - usuario nao encontrado
 [2018-10-07T12:16:17.144] [INFO] default - user nao existente na secao, req: /
 [2018-10-07T12:16:51.673] [INFO] default - user nao existente na secao, req: /addPeso
+[2018-10-07T12:18:54.105] [INFO] default - user nao existente na secao, req: /user-edit/
+[2018-10-09T00:00:01.718] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T17:49:25.360] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T18:18:06.314] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T18:18:06.324] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T18:18:06.325] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T18:19:47.775] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T18:24:10.024] [INFO] default - user nao existente na secao, req: /
+[2018-10-11T19:24:03.237] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T13:19:53.030] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T13:20:20.624] [INFO] default - user nao existente na secao, req: /peso
+[2018-10-15T13:21:17.205] [INFO] default - user nao existente na secao, req: /peso/5bb6d944704bb30eb079e000
+[2018-10-15T13:21:30.200] [ERROR] default - CastError: Cast to number failed for value "www" at path "quilos"
+[2018-10-15T13:27:41.919] [INFO] default - user nao existente na secao, req: /peso/5bb6d944704bb30eb079e000
+[2018-10-15T13:30:33.663] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-15T13:38:23.239] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-15T13:48:49.744] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-15T13:52:01.261] [INFO] default - user nao existente na secao, req: /addPeso
+[2018-10-15T14:04:00.962] [ERROR] default - CastError: Cast to date failed for value "Invalid Date" at path "data"
+[2018-10-15T14:04:11.868] [ERROR] default - CastError: Cast to number failed for value "wwwww" at path "quilos"
+[2018-10-15T14:05:31.288] [ERROR] default - invalid id
+[2018-10-15T14:28:11.001] [ERROR] default - invalid id
+[2018-10-15T14:29:24.633] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T14:37:04.978] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T14:37:21.052] [ERROR] default - invalid id
+[2018-10-15T14:42:19.018] [INFO] default - user nao existente na secao, req: /add-atividade-fisica
+[2018-10-15T15:01:07.334] [INFO] default - user nao existente na secao, req: /add_alimentacao
+[2018-10-15T15:04:55.946] [INFO] default - user nao existente na secao, req: /peso
+[2018-10-15T15:15:41.736] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T15:22:50.365] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T15:26:53.650] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:04:14.854] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:10:13.570] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:12:02.390] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:38:21.030] [INFO] default - user nao existente na secao, req: /alimentacao/
+[2018-10-15T17:40:01.429] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:40:19.568] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:21.053] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:33.470] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:34.061] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:34.513] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.013] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.031] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.053] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.069] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.095] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.110] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.126] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.138] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.151] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.165] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.177] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.188] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.199] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.209] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.232] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.287] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.315] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.329] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.340] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.351] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.368] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.385] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.395] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.407] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.417] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.431] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.443] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.453] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.464] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.477] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.487] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.497] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.509] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.519] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:37.530] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.582] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.605] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.619] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.632] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.646] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.659] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.672] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.689] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.700] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.711] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.723] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.733] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.748] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.759] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.772] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.784] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.795] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.807] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.818] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:42.829] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:43.965] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:43.981] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:43.996] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.010] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.022] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.045] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.057] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.067] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.078] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.102] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.112] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.129] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.141] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.152] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.164] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.175] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.190] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.202] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.219] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:40:44.234] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.276] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.298] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.314] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.335] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.347] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.359] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.373] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.384] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.396] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.406] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.423] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.434] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.452] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.495] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.515] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.528] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.538] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.553] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.564] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:41:14.574] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.615] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.633] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.650] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.664] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.676] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.699] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.712] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.724] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.735] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.749] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.765] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.776] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.788] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.801] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.814] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.826] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.843] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.855] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.869] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:14.884] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:25.466] [INFO] default - user nao existente na secao, req: /peso
+[2018-10-15T17:42:43.521] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:44.532] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:46.145] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:46.771] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:42:47.194] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:43:03.616] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:43:04.615] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:43:05.234] [ERROR] default - ReferenceError: error is not defined
+[2018-10-15T17:43:34.859] [INFO] default - user nao existente na secao, req: /peso
+[2018-10-15T17:43:56.331] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-15T17:48:59.192] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:49:13.957] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-15T17:50:54.610] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:53:06.135] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T17:53:15.504] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-15T18:18:55.788] [INFO] default - user nao existente na secao, req: /
+[2018-10-15T18:19:06.882] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-15T18:19:21.928] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"
+[2018-10-15T18:20:03.914] [ERROR] default - Erro ao tentar salvar medida: ValidationError: data: Cast to Date failed for value "Invalid Date" at path "data"

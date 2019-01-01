@@ -10,47 +10,54 @@
       <h2>HealthTrack</h2>
     </div>
     <div class="row justify-content-between">
-        <section class="col-md-auto ">
-          <nav aria-label="breadcrumb ">
-            <ol class="breadcrumb ">
-             <li class="breadcrumb-item" aria-current="page "><a href="/">Home</a></li>             
-             <li class="breadcrumb-item active" aria-current="page "><a href="/alimentacao">Minhas alimenta&ccedil;&atilde;o</a></li>
-             <li class="breadcrumb-item" aria-current="page ">Nova alimenta&ccedil;&atilde;o</li>
-           </ol>  
-         </nav>
-       </section>
-       <section class="col-md-7 "><p class="font-weight-bold "></p></section>
-     </div>
-     <div class="card col-md-4" style="padding: 20px;" >
+      <section class="col-md-auto ">
+        <nav aria-label="breadcrumb ">
+          <ol class="breadcrumb ">
+            <li class="breadcrumb-item" aria-current="page "><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page "><a href="/alimentacao">Minhas
+                alimenta&ccedil;&atilde;o</a></li>
+            <li class="breadcrumb-item" aria-current="page ">Nova alimenta&ccedil;&atilde;o</li>
+          </ol>
+        </nav>
+      </section>
+      <section class="col-md-7 ">
+        <p class="font-weight-bold "></p>
+      </section>
+    </div>
+    <div class="card col-md-4" style="padding: 20px;">
       <form action="/alimentacao" id="add" method="post" class="form-horizontal" card col-md-4>
         <div class="form-group">
           <label for="tipo">Tipo</label>
           <select class="form-control" name="tipo">
-             {{#each tipoAlimentacao}}
-            <option value="{{this}}">{{this}}</option>  
-               {{/each}}                   
+            {{#each tipoAlimentacao}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
           </select>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label for="desc ">Descri&ccedil;&atilde;o:</label>
-          <input type="text" class="form-control" name="descricao" placeholder="Descreva a alimentacao">
+          <input type="text" class="form-control" name="descricao"  id="desc" placeholder="Descreva a alimentacao">
+          <span class="alerta"></span>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label for="data ">Calorias ingeridas (em kcal)</label>
-          <input type="text" class="form-control" name="calorias" placeholder="0 ">
+          <input type="text" class="form-control" name="calorias" id="cal" placeholder="0 ">
+          <span class="alerta"></span>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label for="data">Data / Hora</label>
-          <input type="text" class="form-control" name="data" placeholder="DD/MM/AAAA">
-        </div>      
-        
+          <input type="datetime" class="form-control" name="data"  id="data" placeholder="DD/MM/AAAA">
+          <span class="alerta"></span>
+        </div>
+
         <div>
-        <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('add').submit(); ">Salvar</a>
-         <a href="/alimentacao" role="button" class="btn btn-danger ">Cancelar</a>
-       </div>
-     </form>
+          <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('add').submit(); ">Salvar</a>
+          <a href="/alimentacao" role="button" class="btn btn-danger ">Cancelar</a>
+        </div>
+      </form>
 
-   </div>
+    </div>
 
- </body>
- </html>
+</body>
+
+</html>

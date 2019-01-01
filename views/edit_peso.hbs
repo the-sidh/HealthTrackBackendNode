@@ -27,12 +27,14 @@
       </div>
       <div class="card col-md-4" style="padding: 20px;">
         <div class="form-group ">
-          <label for="desc ">Peso em KG</label>
-          <input type="text" class="form-control" name="quilos" value="{{peso.quilos}}">
+          <label for="desc">Peso em KG</label>
+          <input type="text" class="form-control" name="quilos" id="peso" value="{{peso.quilos}}">
+          <span class="alerta"></span>
         </div>
         <div class="form-group">
           <label for="data">Data</label>
-          <input type="text" class="form-control" name="data" value="{{formatDate peso.data}}" >
+          <input type="text" class="form-control" name="data" id="data" value="{{formatDate peso.data}}" >
+          <span class="alerta"></span>
         </div>
 
         <div>

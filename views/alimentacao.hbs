@@ -3,7 +3,16 @@
 <html lang="en">
 {{>header}}
 
+{{#if error_message}}
+
+<body onload="myAlertBottom()">
+{{else if success_message}}
+
+<body onload="myAlertTop()">
+{{else}}
+
 <body>
+  {{/if}}
   <div class="container-fluid">
     <div class="row">
       <h2>HealthTrack</h2>
@@ -45,11 +54,10 @@
             <td>{{this.descricao}}</td>
             <td>{{this.calorias}}</td>
             <td>{{formatDate this.data}}</td>
-
             <td><a href="/alimentacao/{{this.id}}"><i class="fas fa-edit"></i></a> </td>
             <td>
-              <form id="delete" action="/save_alimentacao/{{this.id}}" method="post">
-                <a href="#" onClick="if (confirm('Tem certeza que deseja remover esse registro?')){document.getElementById('delete').submit()}"><i
+              <form id="delete{{this.id}}" action="/save_alimentacao/{{this.id}}" method="post">
+                <a href="#" onClick="if (confirm('Tem certeza que deseja remover esse registro?')){document.getElementById('delete{{this.id}}').submit()}"><i
                     class="fas fa-trash-alt"></i></a></form>
             </td>
           </tr>

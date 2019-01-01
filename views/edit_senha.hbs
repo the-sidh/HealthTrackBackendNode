@@ -1,0 +1,43 @@
+  <!-- Declaração obrigatória para o funcionamento do framework. -->
+  <!Doctype html>
+  <html lang="en">
+{{>header}}
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <h2>HealthTrack</h2>
+      </div>
+      <div class="row justify-content-between">
+        <section class="col-md-auto">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">             
+             <li class="breadcrumb-item active" aria-current="page">Senha</li>
+           </ol>  
+         </nav>
+       </section>
+       <section class="col-md-7"><p class="font-weight-bold"></p></section>
+     </div>
+     <div class="card col-md-4" style="padding: 20px;" >
+       <form class="form-horizontal" action="reset_password" method="post" id="reset" card col-md-4>
+         <input type="hidden" name="token" value={{reset_password_token}}>
+      <span class="alerta"></span>
+        <div class="form-group" >
+          <label for="nome">Nova senha:</label>
+          <input type="password" class="form-control"  id="pwd" name="newPassword" placeholder="">
+          <span class="alerta"></span>
+        </div>
+        <div class="form-group " >
+          <label for="nome">Confirme a nova senha:</label>
+          <input type="password" class="form-control"  id="pwd2" name="verifyPassword" placeholder="">
+          <span class="alerta"></span>
+        </div>
+        <div>
+         <a href="#" role="button" class="btn btn-primary" onClick="document.getElementById('reset').submit(); ">Confirmar</a>
+         <button type="submit" class="btn btn-danger">Cancelar</button>
+       </div>
+     </form>
+
+   </div>
+
+ </body>
+ </html>
